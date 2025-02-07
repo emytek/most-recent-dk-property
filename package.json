@@ -15,6 +15,7 @@
     "antd": "^5.23.0",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
+    "framer-motion": "^12.4.0",
     "js-cookie": "^3.0.5",
     "naija-state-local-government": "^1.1.2",
     "number-currency-format": "^1.0.10",

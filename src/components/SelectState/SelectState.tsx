@@ -22,11 +22,11 @@ export default function SelectState({ className }: Props) {
       allowClear
       showSearch
       optionFilterProp="label"
-      style={{ height: "45px" }}
+      style={{ height: "45px", width: "35%" }}
       defaultValue={NaijaStates.states()[24]}
       value={state}
       onChange={onChangeState}
-      className={`select_input ${className}`}
+      className={`select_input ${className} w-full`}
     />
   );
 }

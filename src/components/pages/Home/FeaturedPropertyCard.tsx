@@ -15,6 +15,23 @@ interface IFeaturedPropertyCard {
   loading?: boolean;
 }
 
+// Custom Hook to Check Screen Size
+const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+    mediaQuery.addEventListener("change", handler);
+
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, [query]);
+
+  return matches;
+};
+
 export default function FeaturedPropertyCard({
   description,
   imagesList,
@@ -28,6 +45,7 @@ export default function FeaturedPropertyCard({
   const [mediaList, setMediaList] = useState<{ type: string; url: string }[]>(
     []
   );
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   useEffect(() => {
     if (isModalOpen) {
@@ -96,9 +114,14 @@ export default function FeaturedPropertyCard({
         open={isModalOpen}
         footer={null}
         onCancel={() => setIsModalOpen(false)}
-        width={"90%"}
-        className="!max-w-[95vw] sm:!max-w-[600px] md:!max-w-[750px] lg:!max-w-[800px]" // Tailwind best practice for modal width
+        width={"60%"}
+        className="!max-w-[95vw] sm:!max-w-[600px] md:!max-w-[750px] lg:!max-w-[800px]"
         centered
+        style={
+          isSmallScreen
+            ? { left: "-20%", transform: "translate(-2%, -50%)" }
+            : {}
+        }
       >
         <Slider {...settings}>
           {mediaList.map((media, index) => (
