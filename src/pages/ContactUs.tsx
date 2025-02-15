@@ -323,7 +323,7 @@ export default function ContactUs() {
               data-aos-delay="600"
             >
               <label htmlFor="message" className="font-semibold text-[15px]">
-                Message
+                Reason for contacting
               </label>
               <Input.TextArea
                 cols={7}
