@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  --primary: #e80e0f;
+  --white: #fff;
+  --black: #000;
+  --muted1: #888888;
+  --muted2: #71717a;
+  --font-outfit: "Outfit", serif;
+  --font-plusJakartaSans: "Plus Jakarta Sans", serif;
+  --font-poppins: "Poppins", serif;
+}
+
+html {
+  font-family: "Outfit", serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding: 40px 0;
+}
+
+body {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  overflow-x: hidden;
+}
+
+.main_bg {
+  @apply bg-gradient-to-br from-[#ffffff] to-[#d4e7fe]
+}
+
+.scroller-none::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #ebebeb;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+.nav_link {
+  position: relative;
+  text-decoration: none;
+  color: var(--black);
+  width: fit-content;
+}
+
+.nav_link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--black);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav_link:hover {
+  color: var(--black);
+}
+
+.nav_link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav_link.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.nav_link.active::after {
+  background-color: var(--primary);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+table {
+  font-family: var(--font-outfit);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.terms {
+  h3 {
+    @apply font-bold text-[20px] md:text-[30px];
+  }
+
+  p {
+    @apply font-normal text-[16px] md:text-[19px];
+  }
+
+  ul {
+    @apply my-8 flex flex-col items-start gap-4;
+
+    li {
+      @apply font-normal text-[16px] md:text-[19px]
+    }
+  }
+}
+
+.privacy {
+  h3 {
+    @apply font-bold text-[20px] md:text-[30px];
+  }
+
+  p {
+    @apply font-normal text-[16px] md:text-[19px];
+  }
+
+  ul {
+    @apply my-8 flex flex-col items-start gap-4;
+
+    li {
+      @apply font-normal text-[16px] md:text-[19px]
+    }
+  }
+}
